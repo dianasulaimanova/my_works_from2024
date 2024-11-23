@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+ int c;
+ printf ("Введите код телефона:");
+ scanf ("%d", &c);
+ switch(c) {
+     case 903:
+     printf ("Билайн");break;
+     case 905:
+     printf ("Билайн");break;
+     case 906:
+     printf ("Билайн");break;
+     case 925:
+     printf ("Мегафон");break;
+     case 926:
+     printf ("Мегафон");break;
+     case 916:
+     printf ("МТС");break;
+     case 917:
+     printf ("МТС");break;
+ } return 0;
+}
