@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int number, a;
+    int product = 1;
+    int temp;
+    printf("Введите целое число: ");
+    scanf("%d", &number);
+
+    printf("Введите число a: ");
+    scanf("%d", &a);
+    temp = number;
+    while (temp != 0) {
+        int digit = temp % 10; // Получаем последнюю цифру
+        product = product * digit; // Умножаем на текущую цифру
+        temp = temp / 10; // Удаляем последнюю цифру
+    }
+    if (product % a == 0) {
+        printf("Произведение цифр числа %d кратно числу %d.\n", number, a);
+    } else {
+        printf("Произведение цифр числа %d не кратно числу %d.\n", number, a);
+    }
+
+    return 0;
+}
