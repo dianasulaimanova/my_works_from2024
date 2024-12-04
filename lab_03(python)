@@ -1,0 +1,22 @@
+a=int(input("Введите расстояние планеты от солнца в млн:"))
+match a:
+  case 58:
+     print("Меркурий")
+  case 108:
+     print("Венера")
+  case 150:
+     print("Земля")
+  case 228:
+     print("Марс")
+  case 778:
+     print("Юпитер")
+  case 1430:
+     print("Сатурн")
+  case 2870:
+     print("Уран")
+  case 4500:
+     print("Нептун")
+  case 5950:
+     print("Плутон")
+if (a!=58 and a!=108 and a!=150 and a!=228 and a!=778 and a!=2870 and a!=4500 and a!=5950):
+     print("Ошибка")
