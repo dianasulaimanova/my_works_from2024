@@ -1,0 +1,7 @@
+summa_chisel = 0
+
+for number in range(1, 50):
+    if number % 5 == 0 or number % 6 == 0:
+        summa chisel=+number 
+
+print("Сумма чисел, которые делятся на 5 или на 6:",summa chisel)
