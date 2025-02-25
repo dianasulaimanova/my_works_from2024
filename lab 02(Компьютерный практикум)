@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+double example_function(double x) {
+    return std::pow(x, 3) - 0.2 * std::pow(x, 2) + 0.5 * x - 1;
+}
+
+double derivative_example_function(double x) {
+    return 3 * std::pow(x, 2) - 0.4 * x + 0.5;
+}
+
+std::pair<double, int> tangent_method(double (*f)(double), double (*df)(double), double x0, double epsilon, int max_iter) {
+    double x = x0;
+    for (int i = 0; i < max_iter; ++i) {
+        double f_x = f(x);
+        double f_derivative = df(x);
+        double x_new = x - f_x / f_derivative;
+
+        if (std::abs(x_new - x) < epsilon) {
+            return std::make_pair(x_new, i + 1);
+        }
+        x = x_new;
+    }
+    return std::make_pair(std::nan(""), max_iter);
+}
+
+int main() {
+    double x0 = 1; // начальное значение
+    double epsilon = 1e-6; // точность
+    int max_iter = 100; // число итераций
+
+    auto [root, iterations] = tangent_method(example_function, derivative_example_function, x0, epsilon, max_iter);
+
+    if (!std::isnan(root)) {
+        std::cout << std::fixed << std::setprecision(12);
+        std::cout << "Корень уравнения: " << root << std::endl;
+        std::cout << "Количество итераций: " << iterations << std::endl;
+        double fun = example_function(root);
+        std::cout << "Значение функции: f(" << root << ") = " << fun << std::endl;
+    } else {
+        std::cout << "Метод не сошелся за указанное количество итераций." << std::endl;
+    }
+
+    return 0;
+}
